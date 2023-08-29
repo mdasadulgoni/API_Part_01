@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <title>API (Application Programing Interface)</title>
+        <style>
+         .m-button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+        </style>
+     </head>
+   <body>
+      <div class="m-button">
+         <button class="btn btn-success mt-2 ms-5" type="button" disabled>
+            <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+            <span role="status">Loading...</span>
+          </button>
+      </div>
+      <table class="table">
+         <thead>
+           <tr>
+             <th scope="col">AlbumId</th>
+             <th scope="col">Id</th>
+             <th scope="col">ThumbnailUrl</th>
+             <th scope="col">Title</th>
+             <th scope="col">URL</th>
+           </tr>
+         </thead>
+         <tbody>
+          
+         </tbody>
+       </table>
+      <!-- <script>
+         // API LINK
+         // https://jsonplaceholder.typicode.com/photos
+
+         // xmelhttprequest
+         // https://www.w3schools.com/xml/xml_http.asp
+
+         // Sentax ....
+         //  var xhttp = new XMLHttpRequest();
+
+         class MyClass {
+             // 1. Property
+
+            // 2. Sontructor
+
+            // 3. Methods
+
+            getName(name){
+               console.log('Hello my name is :' + name);
+               
+               }
+             }
+            
+             // create a new object from the myclass
+             // sentax
+             // let objectname = new classname();
+
+             let obj = new MyClass()
+
+             // Access the method using .dot operator member selection operator
+
+             obj.getName('Md Asadul  Goni')
+
+             // there is a built in class for api calling
+             // XMLHttpRequest class
+
+             let myobj = new XMLHttpRequest();
+            //  obj.open()
+      </script> -->
+ <!-- =================================== -->
+      <script>
+         // API LINK
+         // https://jsonplaceholder.typicode.com/photos
+
+         // variable = new XMLHttsrequest()
+
+         // create a xhr object from the xmlhttsrequest class
+
+         class MyClass {
+            // 1. property
+
+            // 2. constructor
+
+            // 3. method 
+            getName(name){
+               console.log('Hello My Name is :' + name );
+            }
+         }
+         // create a new object from the myclass 
+         // santax
+         // let objectname = new classname();
+         let obj = new MyClass();
+
+         // access the method using . dot operator member selection operator
+
+         obj.getName('Asadul Goni');
+
+         // ====================================
+
+         // there is a built in class for api calling
+         // XHMLHttpRequest class
+
+         let xhr = new XMLHttpRequest()
+
+         xhr.open("GET", "https://jsonplaceholder.typicode.com/photos")
+
+         xhr.send()
+
+         xhr.onload = function(response){
+            console.log(response);
+         }
+
+         // 1. function defination
+         function getMyPhoto(url,method,mycbfn){
+
+            let xhr = new XMLHttpRequest()
+
+            xhr.open(method,url)
+
+            xhr.send()
+
+            xhr.onload = function(response){
+               // console.log(response);
+               // mycbfn(response)
+               mycbfn( xhr.responseText);
+            }
+
+            
+         }
+
+         // 2. function calling
+         getMyPhoto("https://jsonplaceholder.typicode.com/photos","GET", function(response){
+            document.querySelector('button').remove()
+            // console.log(typeof response);
+            // console.log(response);
+            response = JSON.parse(response)
+            // console.log(typeof response);
+            // console.log(response);
+
+            let tbody = document.querySelector('.table > tbody')
+
+            response.forEach((currentElement,index,arr) => {
+               console.log(currentElement);
+               let tr = document.createElement('tr')
+               let td1 = document.createElement('td')
+               td1.innerHTML = currentElement.albumId
+               let td2= document.createElement('td')
+               td2.innerHTML = currentElement.id
+               let td3= document.createElement('td')
+               td3.innerHTML = currentElement.thumbnailUrl
+               let td4= document.createElement('td')
+               td4.innerHTML = currentElement.title
+               let td5= document.createElement('td')
+               let img = document.createElement('img')
+               img.setAttribute('src',currentElement.thumbnailUrl)
+               td5.append(img)
+
+               tr.appendChild(td1)
+               tr.appendChild(td2)
+               tr.appendChild(td3)
+               tr.appendChild(td4)
+               tr.appendChild(td5)
+               // img.appendChild(img)
+
+               tbody.append(tr)
+            });
+         })
+
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+   </body> 
+</html>
